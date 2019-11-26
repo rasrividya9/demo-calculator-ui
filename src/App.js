@@ -3,7 +3,7 @@ import './App.css';
 import { Form, FormGroup, Label, Input, Button, Container, Row } from 'reactstrap';
 import axios from 'axios'
 
-const API_URL = 'http://localhost:7001/add'
+const API_URL = 'http://calculator-service:7001/add'
 class App extends Component {
   constructor() {
     super();
