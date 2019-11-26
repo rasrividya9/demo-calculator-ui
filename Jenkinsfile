@@ -6,7 +6,7 @@ node {
     }
 
     stage('Build image') {
-        app = docker.build("learntechpuzz/demo-calculator-service")
+        app = docker.build("learntechpuzz/demo-calculator-ui")
     }
 
     stage('Push image') {
