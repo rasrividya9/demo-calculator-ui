@@ -1,5 +1,4 @@
 node {
-
     def app
 
     stage('Checkout from repository') {
@@ -17,3 +16,6 @@ node {
         }
     }
 }
+
+
+
