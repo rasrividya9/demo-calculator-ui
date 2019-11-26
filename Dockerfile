@@ -6,7 +6,6 @@ RUN npm install
 COPY ./ /app/
 RUN npm run build
 
-EXPOSE 80
 
 # Setup Nginx
 FROM nginx:latest
