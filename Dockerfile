@@ -1,5 +1,5 @@
 # Build React app using Node
-FROM node:latest
+FROM node:latest as build-stage
 WORKDIR /app
 COPY package*.json /app/
 RUN npm install
