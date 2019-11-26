@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Form, FormGroup, Label, Input, Button, Container, Row } from 'reactstrap';
+import axios from 'axios'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const API_URL = 'http://localhost:7001/add'
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      number1: '',
+      number2: '',
+      result: '',
+    };
+  }
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const { number1, number2 } = this.state;
+    axios.get(API_URL, { params: { number1, number2 } })
+      .then((result) => {
+        this.setState({result: result.data});
+      })
+      .catch(error => {
+        return error;
+      });
+  }
+
+  render() {
+    const { number1, number2, result } = this.state;
+    return (
+      <Container>
+        <Row><h1>Demo Calculator</h1></Row>
+        <Form onSubmit={this.onSubmit}>
+          <FormGroup>
+            <Label for="number1">Number 1</Label>
+            <Input type="number" name="number1" id="number1" value={number1} onChange={this.onChange} placeholder="Enter Number1" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="number2">Number 2</Label>
+            <Input type="number" name="number2" id="number2" value={number2} onChange={this.onChange} placeholder="Enter Number2" />
+          </FormGroup>
+          <FormGroup>
+            <Label for="result">Result</Label>
+            <Input type="number" name="result" id="result" readOnly value={result} onChange={this.onChange}/>
+          </FormGroup>
+          <Button type="submit" color="primary">ADD</Button>
+        </Form>
+      </Container>
+    );
+  }
 }
+
 
 export default App;
