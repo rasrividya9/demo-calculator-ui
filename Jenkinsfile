@@ -1,7 +1,7 @@
 node {
     def app
 
-    stage('Checkout from repository') {
+    stage('Checkout') {
         checkout scm
     }
 
