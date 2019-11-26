@@ -1,4 +1,4 @@
-# Build React app using Node
+# Build demo-calculator-ui using Node
 
 FROM node:latest as build-stage
 
@@ -13,7 +13,7 @@ COPY ./ /app/
 RUN npm run build
 
 
-# Setup Nginx and deploy React app
+# Setup Nginx for demo-calculator-ui
 
 FROM nginx:latest
 
