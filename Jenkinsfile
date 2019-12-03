@@ -10,7 +10,7 @@ node {
     }
 
     stage('Push image') {
-        docker.withRegistry('https://registry.hub.docker.com/demo-calculator-ui', 'dockerhubcredentials') {
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhubcredentials') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
