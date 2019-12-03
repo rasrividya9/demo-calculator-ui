@@ -6,11 +6,11 @@ node {
     }
 
     stage('Build image') {
-        app = docker.build("learntechpuzz/demo-calculator-ui")
+        app = docker.build("rasrividya/demo-calculator-ui")
     }
 
     stage('Push image') {
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+        docker.withRegistry('https://registry.hub.docker.com/demo-calculator-ui', 'dockerhubcredentials') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
